@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block start %}
+    <style>
+        .mb-4{
+            width: 80%;
+            margin-left: 10%;
+            margin-right: 2%;
+        }
+    </style>
+
+    <div class="mb-4" align="center">
+        <h2 class="pt-2 tm-color-primary tm-post-title">{{post.title}}</h2>
+        <p class="tm-mb-40">{{post.created_at}} posted by {{post.user.username}}</p>
+
+        <p>
+            {{post.content|safe}} 
+        </p>
+    </div>
+
+    {% if request.user.is_authenticated %}
+        <div>
+            <div class="mb-4" align="center">
+                <p>{{post.likeCount}} Likes</p>
+                {% if like %}
+                    <input type="hidden" id="use" name="use" value="unlike">
+                    <input type="hidden" id="liked" name="liked" value="{{post.id}}">
+                    <input type="submit" value="Unlike" onclick= "mylike()">
+                {% else %}
+                    <input type="hidden" id="use" name="use" value="like">
+                    <input type="hidden" id="liked" name="liked" value="{{post.id}}">
+                    <input type="submit" value="Like" onclick= "mylike()">
+                {% endif %}
+            </div>
+            <div align="center" style="width: 200px; margin-left:43%;">
+                <div>
+                    <div class="wrapper">
+                        <div>
+                            <div class="field email">
+                                <div class="input-area">
+                                    <label for="comment">Comment:</label>
+                                    <input type="text" name="comment" id="comment" placeholder="Comment">
+                                </div>
+                                <input type="hidden" id="commented" name="commented" value="{{post.id}}">
+                            </div>
+                            <input type="submit" value="Comment" onclick= "comment()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="mb-4" align="center">
+                <br>
+                <h2>Comments:</h2>
+                {% for comment in comments %}
+                    <p>
+                        <hr>
+                        {{comment.commentText}}
+                        <hr>
+                    </p>
+                {% endfor %}
+            </div>
+
+        </div>
+    {% endif %}
+
+{%endblock %}

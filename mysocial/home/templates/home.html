@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block start %}
+    {% for post in posts %}
+        <!-- home page post display  -->
+        <div class="cardContainer my-5 mx-3">
+
+            <div class="card my-2 mx-2">
+            <h2>{{post.title}}</h2>
+            <p>{{post.likeCount}} Likes</p>
+            <a href="{% url 'see_post' post.slug %}">View</a>
+            </div>
+        
+        </div>
+    {% endfor %}
+{%endblock %}

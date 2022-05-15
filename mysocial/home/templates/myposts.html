@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block start %}
+
+
+    
+
+    <section>
+        <div>
+            <table class="table" align="center">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Created By</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for post in post_objs %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{post.title}}</td>
+                    <td>{{post.user.username}}</td>
+                    <td>{{post.created_at}}</td>
+                    <td>
+                        <a href="{% url 'post_update' post.slug %}" class="btn btn-success">Update</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+{% endblock %}

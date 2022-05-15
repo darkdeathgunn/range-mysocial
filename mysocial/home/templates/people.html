@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block start %}
+
+
+    
+
+    <section>
+        <div>
+            <table class="table" align="center">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Joined</th>
+                    <th scope="col">VIsit</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for cuser in user_Objs %}
+                        <tr>
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{cuser.id}}</td>
+                            <td>{{cuser.username}}</td>
+                            <td>{{cuser.date_joined}}</td>
+                            <td>
+                                <a href="{% url 'visit' cuser.id %}" class="btn btn-primary">Visit</a>
+                            </td>
+                        </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+{% endblock %}

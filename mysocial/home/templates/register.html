@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block start %}
+    <div class="my-4 mx-5">
+        <div class="wrapper">
+        <header>Register</header>
+        <div>
+            <div class="field email">
+            <div class="input-area">
+                <input type="text" name="username" id="username" placeholder="Username">
+            </div>
+            </div>
+            <div class="field password">
+            <div class="input-area">
+                <input type="password" name="password" id="password" placeholder="Password">
+            </div>
+            </div>
+            <input type="submit" value="Register" onclick= "register()">
+        </div>
+        </div>
+    </div>
+  
+
+{%endblock %}

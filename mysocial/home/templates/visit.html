@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block start %}
+
+
+    <style>
+        .flooo{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 30px;
+        }
+    </style>
+
+        <div class="container">
+            <h1>{{cuser.username}}</h1>
+            <hr>
+            <br>
+            <p class="flooo">{{follower}} Followers </p>
+            <p class="flooo">{{following}} Following</p>
+            {% if follow %}
+                <input type="hidden" id="use" name="use" value="unfollow">
+                <input type="hidden" id="foll" name="foll" value="{{cuser.id}}">
+                <input type="submit" value="Unfollow" onclick= "myfollow()">
+            {% else %}
+                <input type="hidden" id="use" name="use" value="follow">
+                <input type="hidden" id="foll" name="foll" value="{{cuser.id}}">
+                <input type="submit" value="Follow" onclick= "myfollow()">
+            {% endif %}
+
+{% endblock %}
